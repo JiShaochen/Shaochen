@@ -1,0 +1,3 @@
+- dto： 代表request，接收前端请求的实体叫做dto
+- po：  代表response，返回给前端的实体类叫做po
+- vo:   与数据库做交互的实体

@@ -2,6 +2,7 @@ package com.shaochen.swaggerdemo.entity.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author JiShaochen
@@ -10,6 +11,7 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class UserDemoByIdVO {
     // 用户的id
     private Integer id;

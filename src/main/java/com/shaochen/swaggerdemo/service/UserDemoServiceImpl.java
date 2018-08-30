@@ -1,6 +1,8 @@
 package com.shaochen.swaggerdemo.service;
 
+import com.shaochen.swaggerdemo.common.exception.ExceptionManager;
 import com.shaochen.swaggerdemo.dao.UserDemoMapper;
+import com.shaochen.swaggerdemo.dao.UserDemoQueryMapper;
 import com.shaochen.swaggerdemo.entity.dto.UpdateUserDemoDTO;
 import com.shaochen.swaggerdemo.entity.dto.UserDemoDTO;
 import com.shaochen.swaggerdemo.entity.po.UserDemoPO;
@@ -21,6 +23,12 @@ public class UserDemoServiceImpl implements UserDemoService {
     @Resource
     UserDemoMapper userMapper;
 
+    @Resource
+    UserDemoQueryMapper userDemoQueryMapper;
+
+    @Resource
+    ExceptionManager exceptionManager;
+
     /**
      * @Author: ShaoChen
      * @Description:  插入用户案例
@@ -28,6 +36,9 @@ public class UserDemoServiceImpl implements UserDemoService {
      */
     @Override
     public void addUserDemo(UserDemoDTO userDemoDTO) {
+        if (true) {
+            throw exceptionManager.createByCode("TH001");
+        }
         Integer age = userDemoDTO.getAge();
         String address = userDemoDTO.getAddress();
         String name = userDemoDTO.getName();
@@ -42,7 +53,7 @@ public class UserDemoServiceImpl implements UserDemoService {
      */
     @Override
     public UserDemoPO getUserDemo(Integer id) {
-        UserDemoByIdVO userDemoVO = userMapper.getUserDemo(id);
+        UserDemoByIdVO userDemoVO = userDemoQueryMapper.getUserDemo(id);
         Integer resultId = userDemoVO.getId();
         Integer age = userDemoVO.getAge();
         String address = userDemoVO.getAddress();

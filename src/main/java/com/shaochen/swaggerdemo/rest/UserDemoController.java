@@ -1,8 +1,8 @@
 package com.shaochen.swaggerdemo.rest;
 
+import com.shaochen.swaggerdemo.common.result.ApiResult;
 import com.shaochen.swaggerdemo.entity.dto.UpdateUserDemoDTO;
 import com.shaochen.swaggerdemo.entity.dto.UserDemoDTO;
-import com.shaochen.swaggerdemo.entity.po.UserDemoPO;
 import com.shaochen.swaggerdemo.service.UserDemoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -30,29 +30,29 @@ public class UserDemoController {
 
     @ApiOperation(value = "插入用户案例", produces = "application/json")
     @PostMapping
-    public String addUserDemo(@RequestBody UserDemoDTO userDemoDTO) {
+    public ApiResult addUserDemo(@RequestBody UserDemoDTO userDemoDTO) {
         userService.addUserDemo(userDemoDTO);
-        return "ok" ;
+        return ApiResult.success("ok");
     }
 
     @ApiOperation(value = "查询一个用户案例", produces = "application/json")
     @GetMapping("/{id}")
-    public UserDemoPO getUserDemo(@PathVariable(value = "id") Integer id) {
-        return userService.getUserDemo(id);
+    public ApiResult getUserDemo(@PathVariable(value = "id") Integer id) {
+        return ApiResult.success(userService.getUserDemo(id));
     }
 
     @ApiOperation(value = "修改一个用户案例", produces = "application/json")
     @PutMapping
-    public String updateUserDemo(@RequestBody UpdateUserDemoDTO updateDTO) {
+    public ApiResult updateUserDemo(@RequestBody UpdateUserDemoDTO updateDTO) {
         userService.updateUserDemo(updateDTO);
-        return "ok";
+        return ApiResult.success("ok");
     }
 
     @ApiOperation(value = "删除一个用户案例", produces = "application/json")
     @DeleteMapping("/{id}")
-    public String deleteUserDemo(@PathVariable(value = "id") Integer id ) {
+    public ApiResult deleteUserDemo(@PathVariable(value = "id") Integer id ) {
         userService.deleteUserDemo(id);
-        return "ok";
+        return ApiResult.success("ok");
     }
 
 }

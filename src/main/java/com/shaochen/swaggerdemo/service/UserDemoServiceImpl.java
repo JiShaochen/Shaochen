@@ -36,9 +36,6 @@ public class UserDemoServiceImpl implements UserDemoService {
      */
     @Override
     public void addUserDemo(UserDemoDTO userDemoDTO) {
-        if (true) {
-            throw exceptionManager.createByCode("TH001");
-        }
         Integer age = userDemoDTO.getAge();
         String address = userDemoDTO.getAddress();
         String name = userDemoDTO.getName();
